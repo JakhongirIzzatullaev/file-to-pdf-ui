@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload Component</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="wrapper">
+  <div class="container">
+    <div class="card">
+      <div class="upload-box">
+        <div class="drop-area" id="dropArea">
+          <div class="file-icon"><img src="assets/file.svg" alt="svg"></div>
+          <p class="title">Drag and drop document here to upload</p>
+          <input
+                  type="file"
+                  id="fileInput"
+                  multiple
+                  hidden
+          />
+          <button id="browseButton">Browse File</button>
+          <p class="info">
+            Up to 100 MB for PDF and up to 25 MB for DOC, DOCX, RTF, PPT,
+            PPTX, JPEG, PNG, JFIF, XLS, XLSX or TXT
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/script.js"></script>
+</body>
+</html>
