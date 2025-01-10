@@ -62,20 +62,25 @@ document.addEventListener("DOMContentLoaded", () => {
         loader.className = "loader";
         dropArea.appendChild(loader);
 
-        fetch(apiUrl, {
-            method: "POST",
-            body: formData,
-        })
+        fetch(apiUrl, {method: "POST", body: formData})
             .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`Server responded with status ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`Server responded with status ${response.status}`);
                 return response.blob();
             })
             .then((blob) => {
+                // loader.remove();
+                // const blobUrl = URL.createObjectURL(blob);
+                // window.open(blobUrl, "_blank");
                 loader.remove();
+
                 const blobUrl = URL.createObjectURL(blob);
-                window.open(blobUrl, "_blank");
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = 'file.pdf';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(blobUrl);
             })
             .catch((error) => {
                 loader.remove();
